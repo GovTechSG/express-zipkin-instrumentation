@@ -52,6 +52,7 @@ zipkinMiddleware.createServiceId = (serviceName, serviceNamePostfix) =>
 zipkinMiddleware._context = null;
 zipkinMiddleware.createContext =
   (serviceName) => (new ContextCLS(serviceName));
+zipkinMiddleware.getContext = () => zipkinMiddleware._context;
 
 zipkinMiddleware._instance = null;
 zipkinMiddleware.createInstance =
@@ -64,6 +65,7 @@ zipkinMiddleware.createInstance =
       }),
     })
   );
+zipkinMiddleware.getInstance = () => zipkinMiddleware._instance;
 
 zipkinMiddleware._recorder = null;
 zipkinMiddleware.createRecorder =
@@ -77,3 +79,4 @@ zipkinMiddleware.createRecorder =
         }),
       })
   );
+zipkinMiddleware.getRecorder = () => zipkinMiddleware._recorder;
