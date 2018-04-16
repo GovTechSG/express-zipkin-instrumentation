@@ -1,5 +1,7 @@
 # Zipkin Instrumentation for Express
 
+[![Build Status](https://travis-ci.org/GovTechSG/express-zipkin-instrumentation.svg?branch=master)](https://travis-ci.org/GovTechSG/express-zipkin-instrumentation)
+
 ## Installation
 
 ```bash
