@@ -5,7 +5,7 @@ const {
   jsonEncoder,
 } = require('zipkin');
 const ContextCLS = require('zipkin-context-cls');
-const { HttpLogger } = require('zipkin-transport-http');
+const { HttpLogger } = require('@govtechsg/zipkin-transport-http');
 const { expressMiddleware } = require('zipkin-instrumentation-express');
 
 const LOCAL_CONFIG_JSON_ENCODING = jsonEncoder.JSON_V2;
@@ -76,6 +76,9 @@ zipkinMiddleware.createRecorder =
         logger: new HttpLogger({
           endpoint: `${zipkinHostname}${LOCAL_CONFIG_ZIPKIN_API_PATH}`,
           jsonEncoder: LOCAL_CONFIG_JSON_ENCODING,
+          proxy: (process.env.HTTPS_PROXY ? process.env.HTTPS_PROXY : (
+            process.env.HTTP_PROXY ? process.env.HTTP_PROXY : undefined
+          ))
         }),
       })
   );
